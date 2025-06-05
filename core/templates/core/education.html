@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+{% block content %}
+  <h1>Utdanning</h1>
+  {% for edu in education %}
+    <h2>{{ edu.degree }} - {{ edu.school }}</h2>
+    <p>{{ edu.field_of_study }}</p>
+    <p>{{ edu.start_date }} - {{ edu.end_date|default:"nå" }}</p>
+    <p>{{ edu.description }}</p>
+    <hr>
+  {% endfor %}
+{% endblock %}

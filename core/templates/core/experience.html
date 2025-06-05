@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+{% block content %}
+  <h1>Erfaring</h1>
+  {% for exp in experience %}
+    <h2>{{ exp.job_title }} - {{ exp.company }}</h2>
+    <p>{{ exp.start_date }} - {{ exp.end_date|default:"nå" }}</p>
+    <p>{{ exp.description }}</p>
+    <hr>
+  {% endfor %}
+{% endblock %}
