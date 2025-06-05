@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import About, Education, Experience, Project, Skill
 from .forms import ContactForm
 
@@ -34,7 +34,10 @@ def contact_view(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'core/contact.html', {'form': ContactForm(), 'success': True})
+            return redirect ('contact_success')
     else:
         form = ContactForm()
     return render(request, 'core/contact.html', {'form': form})
+
+def contact_success_view(request):
+    return render(request, 'core/contact_success.html')
